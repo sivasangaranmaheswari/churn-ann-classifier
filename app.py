@@ -12,7 +12,7 @@ import pickle
 
 st.title("Customer Churn Prediction")
 
-model = keras.models.load_model("churn_modelling_ann.h5")
+model = keras.models.load_model("churn_modelling_ann.h5", compile=False)
 gender_encoder = pickle.load(open("gender_encoder.sav","rb"))
 geo_encoder = pickle.load(open("geography_encoder.sav","rb"))
 scaler = pickle.load(open("scaler.sav","rb"))
@@ -52,3 +52,4 @@ positive = "Customer is likely to churn"
 negative = "Customer is not likely to churn"
 
 st.text(positive if predictions[0][0] > 0.5 else negative)
+
